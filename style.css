@@ -61,7 +61,7 @@ nav {
   align-items: center;
   padding: 1.5rem 3rem; 
    background: transparent;
-   width: 100%;
+  width: 100%;
   top: 0;
   z-index: 100;
 }
@@ -690,24 +690,34 @@ footer {
   }
 
   .timeline::before {
-    left: 20px;
+   /* left: 20px;*/
+    display: none;
   }
 
   .timeline-item {
     grid-template-columns: 1fr;
+    /* padding-left: 2rem; /* espacio para la línea */
+    text-align: left;
+    padding: 0;
   }
 
   .timeline-date {
     text-align: left;
     padding: 0;
+     margin-bottom: 0.5rem;
   }
 
   .timeline-content {
-    padding-left: 2.5rem;
+   /* padding-left: 2.5rem; */
+    padding: 0;
+
   }
 
   .timeline-dot {
-    left: 20px;
+   /* left: 20px;
+    width: 14px;
+    height: 14px;  */
+    display: none;
   }
 
    .about-container {
