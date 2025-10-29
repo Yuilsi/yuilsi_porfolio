@@ -1,0 +1,726 @@
+:root {
+  /* 🎨 colores principales */
+  --color-primary:#8966FF;
+  --color-secondary: #6D6BAF;
+
+  /* 🌤 colores neutros */
+  --color-bg: #fafafa;
+  --color-white: #ffffff;
+  --color-text: #333333;
+  --color-text-light: #555555;
+  --color-border: #eeeeee;
+
+  /*  opcionales */
+  --color-accent: #ffd166;
+  --color-success: #06d6a0;
+  --color-error: #ef476f;
+}
+
+
+
+
+/* ==== RESETEO ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* ==== BASE ==== */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* ==== HEADER ==== */
+header {
+  background: url('images/fondo\ banner\ 2.svg') no-repeat center/cover;;
+  color: white;
+  width: 100%;
+ /* min-height: 100vh; /* hace que el fondo abarque toda la altura de la pantalla */
+  display: flex;
+  flex-direction: column;
+}
+
+/* contenedor interno del header */
+header nav,
+header .intro {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 0rem;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem; 
+   background: transparent;
+   width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+nav h1 {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--color-primary);
+}
+
+
+/*BODY*/
+/* ==== SECCIÓN HERO (INICIO) ==== */
+#hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 3rem;
+  z-index: 2;
+}
+
+.hero .intro {
+  flex: 1;
+  text-align: left;
+}
+
+.hero .intro h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.hero .intro span {
+  color: var(--color-primary);
+}
+
+.hero .intro p {
+  margin: 1rem 0;
+  color: #555;
+  max-width: 500px;
+}
+
+/* ==== SECCIÓN SKILLS ==== */
+#skills {
+  padding: 3rem 2rem 0rem;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.skills-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+/* ==== CARRUSEL ==== */
+.skills-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.skills-track {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  animation: scrollLogos 60s linear infinite;
+}
+
+.skills-track img {
+  width: 150px;
+  height: auto;
+  opacity: 0.9;
+  filter: grayscale(100%) brightness(0.8); /* 👈 convierte los logos a gris */
+  transition: transform 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.skills-track img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* ==== ANIMACIÓN CONTINUA ==== */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==== PAUSA EN HOVER ==== */
+.skills-track:hover {
+  animation-play-state: paused;
+}
+
+
+header * {
+  position: relative;
+  z-index: 2; /* mantiene el texto y botones encima del fondo */
+}
+
+/* ==== INTRO ==== */
+.intro h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.intro span {
+  color:var(--color-primary);
+}
+
+.intro p {
+  margin: 1rem auto;
+  max-width: 600px;
+  color: #555;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background: #2f5cff;
+  transform: translateY(-2px);
+}
+
+/* ==== SECCIONES ==== */
+section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* ==== PROYECTOS ==== */
+#projects {
+  background: #f9f9f9;
+  margin: 3em 0rem;
+}
+
+.projects-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* ==== CARD AJUSTADA ==== */
+
+/* ==== CARRUSEL ==== */
+.carousel {
+  position: relative;
+  max-width: 1100px;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 1.5rem;
+}
+
+.card {
+   flex: 0 0 320px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 500px;
+  margin: 0 auto; /* centra las cards */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 230px; /* altura más pequeña */
+  object-fit: cover;
+  display: block;
+}
+
+
+
+.carousel-btn {
+   display: none;
+ /* background: #eee;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;*/
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.prev {
+  position: absolute;
+  left: -60px;
+}
+
+.next {
+  position: absolute;
+  right: -60px;
+}
+
+
+.info {
+  padding: 1rem 1.2rem;
+  text-align: left; /* alinea todo el texto a la izquierda */
+   justify-content: space-between; /* empuja el botón hacia abajo */
+  height: 100%;
+}
+
+
+
+
+.info h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+
+.info p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.info .tags {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem; /* espacio entre texto y flecha */
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.link:hover .arrow-icon {
+  transform: translateX(3px); /* flecha se mueve un poquito al pasar el mouse ✨ */
+}
+
+
+
+/* ==== SOBRE MÍ ==== */
+#about {
+  max-width: 1100px;
+  margin: 5rem auto;
+  padding: 2rem;
+
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.about-image img {
+  width: 370px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px; /* 👈 bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
+}
+
+.about-content {
+  flex: 1;
+  text-align: left;
+}
+
+.about-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  text-transform: capitalize;
+}
+
+.about-content p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.about-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* ==== BOTONES ==== */
+.btn {
+   display: inline-flex; /* 👈 importante: alinear ícono + texto */
+     display: inline-flex; /* 👈 importante: alinear ícono + texto */
+  align-items: center;
+  gap: 0.5rem; /* 👈 espacio entre ícono y texto */
+  padding: 0.7rem 1.4rem;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #6d28d9;
+}
+
+.btn.secondary {
+  border: 2px solid var(--color-primary);
+  color:  white;
+}
+
+.btn.secondary:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+
+/* ==== SECCIÓN EXPERIENCIA ==== */
+#experience {
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 2rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+ /* background: var(--color-primary); */
+  border-radius: 2px;
+}
+
+/* ==== LÍNEA DE TIEMPO ==== */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #ddd;
+  transform: translateX(-50%);
+}
+
+/* ==== ELEMENTOS ==== */
+/* ==== LÍNEA DE TIEMPO AJUSTADA ==== */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 35%; /* 👈 mueve la línea un poco a la izquierda */
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #ddd;
+}
+
+/* ==== ELEMENTOS ==== */
+.timeline-item {
+  display: grid;
+  grid-template-columns: 35% 65%; /* 👈 ajusta proporción (menos espacio a la izquierda) */
+  align-items: start;
+  position: relative;
+}
+
+.timeline-date {
+  text-align: left;
+  padding-right: 2rem;
+}
+
+.timeline-content {
+  padding-left: 2rem;
+   text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 35%;
+  top: 10px;
+  transform: translate(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px #ccc;
+}
+
+
+/* ==== COLORES DE LOS PUNTOS ==== */
+.timeline-dot.green {
+  background: #00b894;
+}
+
+.timeline-dot.orange {
+  background: #00b894;
+ 
+}
+
+.timeline-dot.yellow {
+  background: #00b894;
+}
+
+/* ==== TEXTOS ==== */
+.timeline-date h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.timeline-date p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.timeline-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.timeline-content p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+  margin-top: 0.3rem;
+}
+
+
+
+
+/* ==== CONTACTO ==== */
+#contact {
+  background: #f9f9f9;
+}
+
+#contact .btn {
+  margin-top: 1.5rem; /* 🔹 aumenta este valor según el espacio que quieras */
+}
+
+/* ==== FOOTER ==== */
+footer {
+  background: #f9f9f9;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--color-text-light);
+  border-top: 1px solid #eee;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.footer-content span {
+  color: var(--color-primary);
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icons a {
+  color: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+
+/* ==== RESPONSIVO ==== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .intro h2 {
+    font-size: 2rem;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+    .carousel {
+    max-width: 100%;
+  }
+
+  .card {
+    flex: 0 0 85%;
+  }
+
+  .prev {
+    left: 5px;
+  }
+
+  .next {
+    right: 5px;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-date {
+    text-align: left;
+    padding: 0;
+  }
+
+  .timeline-content {
+    padding-left: 2.5rem;
+  }
+
+  .timeline-dot {
+    left: 20px;
+  }
+
+   .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .about-buttons {
+    justify-content: center;
+  }
+}
