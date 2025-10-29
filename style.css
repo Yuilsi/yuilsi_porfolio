@@ -670,15 +670,48 @@ footer {
   }
 
   .projects-container {
-    grid-template-columns: 1fr;
+   /* grid-template-columns: 1fr; */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem;          /* espacio entre cards */
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+
+
   }
 
-    .carousel {
-    max-width: 100%;
+  .carousel-track {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem;
+    align-items: center;
   }
+
+  
 
   .card {
-    flex: 0 0 85%;
+      flex: none !important;      /* quita el comportamiento de carrusel */
+    width: 90% !important;
+    max-width: 420px;           /* límite para screens grandes móviles */
+    margin: 0 auto;             /* centrado */
+    
+  }
+
+    .carousel-track-container {
+    overflow: visible; /* permite que el contenido se muestre verticalmente */
+    width: 100%;
+  }
+
+    /* 5) ocultar flechas del carousel en móvil (si las tienes) */
+  .carousel-btn {
+    display: none !important;
+  }
+
+    /* 6) pequeña mejora visual: espaciado interno */
+  .projects-container .card,
+  .carousel-track .card {
+    padding-bottom: 0.5rem;
   }
 
   .prev {
