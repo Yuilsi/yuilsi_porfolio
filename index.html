@@ -11,15 +11,33 @@
 </head>
 <body>
   <header>
-    <nav>
-      <img src="images/logo final.svg" alt="logo">
-      <ul>
+
+ <nav class="navbar" role="navigation" aria-label="principal">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="#" class="brand">
+        <img src="images/logo final.svg" alt="yuilsi logo" class="logo">
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="primary-menu" aria-hidden="true">
         <li><a href="#home">Inicio</a></li>
         <li><a href="#about">Sobre mí</a></li>
         <li><a href="#projects">Proyectos</a></li>
-        <li><a href="#contact">Contactame</a></li>
+        <li><a href="#contact">Contacto</a></li>
       </ul>
-    </nav>
+
+      <button class="menu-toggle" id="menu-toggle" aria-controls="primary-menu" aria-expanded="false" aria-label="abrir menú">
+  <i class="fa-solid fa-bars open-icon" aria-hidden="true"></i>
+  <i class="fa-solid fa-xmark close-icon" aria-hidden="true"></i>
+</button>
+    </div>
+  </div>
+
+  <div class="menu-bg" id="menu-bg" tabindex="-1" aria-hidden="true"></div>
+</nav>
+    
      <section class="hero">
      <div class="intro">
       <h2>Hola, soy <span>Yuilsi</span></h2>

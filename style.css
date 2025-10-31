@@ -39,7 +39,7 @@ body {
 /* ==== HEADER ==== */
 header {
   background: url('images/fondo\ banner\ 2.svg') no-repeat center/cover;;
-  color: white;
+  /*color: --color-primary ; */
   width: 100%;
  /* min-height: 100vh; /* hace que el fondo abarque toda la altura de la pantalla */
   display: flex;
@@ -47,45 +47,90 @@ header {
 }
 
 /* contenedor interno del header */
-header nav,
+ 
 header .intro {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 1rem 0rem;
+  padding: 9rem 1rem 0rem;
 }
 
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 3rem; 
-   background: transparent;
-  width: 100%;
+.navbar {
+  position: fixed;
   top: 0;
-  z-index: 100;
-}
-
-nav h1 {
-  color: var(--color-primary);
-  font-weight: 600;
-}
-
-nav ul {
-  list-style: none;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.274);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  z-index: 1200;
 }
 
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s;
+.nav-inner {
+  max-width: 1100px; /* igual que tu resto de secciones */
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem; /* mismo margen lateral */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-nav a:hover {
+.nav-container {
+  max-width: 1100px; /* igual que el resto de la página */
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem; /* mismo margen lateral */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 2rem 1rem;
+    text-align: center;
+}
+
+/* left (logo) */
+.brand{display:flex;align-items:center;text-decoration:none}
+.logo{height:44px;display:block}
+
+/* right group: links + toggle */
+.nav-right{display:flex;align-items:center;gap:1rem}
+
+/* links en desktop (por defecto horizontal) */
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:1.50rem;
+  align-items:center;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#333333;
+  font-weight:500;
+  padding:0.35rem 0.5rem;
+  border-radius:6px;
+}
+.nav-links a:hover {
   color: var(--color-primary);
+}
+/* botón hamburguesa */
+.menu-toggle{
+  display:none; /* se muestra en mobile más abajo */
+  background:transparent;
+  border:0;
+  font-size:1.4rem;
+  color:var(--primary);
+  cursor:pointer;
+  padding:0.4rem;
+}
+
+/* fondo detrás del menu (overlay) */
+.menu-bg{
+  display:none;
 }
 
 
@@ -660,14 +705,111 @@ footer {
 
 /* ==== RESPONSIVO ==== */
 @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 1rem;
+
+   .navbar {
+    padding: 0.85rem 1rem; /* 👈 márgenes más pequeños en móvil */
   }
 
-  .intro h2 {
-    font-size: 2rem;
+
+   .nav-inner {
+    padding: 0.75rem 1rem; /* un poco menos margen lateral en móvil */
   }
+
+   /* mostrar toggler */
+  .menu-toggle{display:inline-flex}
+
+  /* ocultar lista horizontal (la movemos a panel deslizante) */
+  .nav-links{
+    position:fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:62%;                 /* ocupa un poco más de la mitad */
+    max-width:420px;
+    background:#fff;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+    transform: translateX(100%); /* fuera de pantalla derecha */
+    transition: transform .36s cubic-bezier(.2,.9,.3,1);
+    flex-direction:column;
+    align-items:flex-start;
+    padding:5.2rem 1.5rem;
+    gap:1.25rem;
+    z-index:1150;
+  }
+
+  /* cuando el nav está "activo" */
+  .nav-links.show{
+    transform: translateX(0);
+  }
+
+  /* overlay visible */
+  .menu-bg{
+    display:block;
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.2);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease;
+    z-index:1140;
+  }
+  .menu-bg.show {
+    background: transparent; /* cambia el color del fondo solo en móvil */
+  }
+
+  /* estilo de links dentro del panel */
+  .nav-links a{
+    color:#222;
+    font-size:1.05rem;
+    width:100%;
+    padding:0.6rem 0.4rem;
+  }
+
+/* por defecto mostrar solo la hamburguesa */
+.menu-toggle .close-icon { display: none; }
+
+/* cuando el botón tiene .active (añadida por JS), mostraremos la X */
+.menu-toggle.active .open-icon { display: none; }
+.menu-toggle.active .close-icon { display: inline-block; }
+
+
+/* tamaño y alineado del botón */
+.menu-toggle {
+ font-size: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1300;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* color de iconos (opcional) */  
+
+
+
+.menu-toggle i {
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.menu-toggle:hover i {
+  color: #6d28d9;
+}
+
+
+
+  /* para evitar que el header interfiera */
+  header {
+    position: relative;
+    z-index: 10;
+  }
+
+  
+
 
   .projects-container {
    /* grid-template-columns: 1fr; */
